@@ -88,7 +88,7 @@ Externalized API keys for security and portability.
 -----------------------------------------------------------
 
 ### 💡 Bonus: Scalability & Complex Transaction Handling
-## Large-Scale Transaction Storage
+### Large-Scale Transaction Storage
 
 Architecture
 
@@ -100,13 +100,13 @@ Cold: AWS S3 in Parquet (cheap archival)
 Indexes: (walletAddress, blockchain, timestamp DESC) and txHash
 
 
-## Trade-Offs for Complex Transactions (e.g., Uniswap Add Liquidity)
+### Trade-Offs for Complex Transactions (e.g., Uniswap Add Liquidity)
 Challenges
 
 Multiple internal calls across smart contracts
 Complex state changes and token movements
 
-# Approaches
+Approaches
 Raw logs -> only	Full fidelity -> Requires heavy client parsing
 Parsed summaries ->	Easy to consume	-> Loses raw detail
 Hybrid ✅	-> Best of both	 -> Higher storage & processing cost
