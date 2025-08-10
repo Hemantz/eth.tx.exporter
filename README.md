@@ -30,23 +30,27 @@ cd eth.tx.exporter
 ### Configure Application Properties
 Edit application.properties with your blockchain API keys if required:
 
-spring.application.name=eth.tx.exporter
+```spring.application.name=eth.tx.exporter
 alchemy.api.base-url=https://eth-mainnet.alchemyapi.io/v2/<Your-Alchemy-key>
-
+```
 ### Build the Project
 Using Gradle Wrapper (recommended):
 
 Use Application.java and run it locally the springboot server will start
+```
 gradle clean build
-
+```
 ### Run Locally (Spring Boot)
 Using Gradle Wrapper:
 
+```
 ./gradlew bootRun
+```
 Or run the compiled JAR:
-
+```
 java -jar build/libs/eth.tx.exporter-0.0.1-SNAPSHOT.jar
 Spring Boot will start on http://localhost:8080 by default.
+```
 
 ### 📡 API Usage
 Export Transactions (Ethereum)
@@ -60,7 +64,9 @@ walletAddress	✅	Ethereum wallet address to fetch transactions for
 blockchain	✅	Blockchain name (ETHEREUM)
 
 Example curl:
+```
 curl --location 'http://localhost:8080/api/transactions/export?walletAddress=0xd620AADaBaA20d2af700853C4504028cba7C3333&blockchain=ETHEREUM'
+```
 
 ### 🛠 Development Notes
 This project uses Spring Boot — Application.java is the main entry point.
