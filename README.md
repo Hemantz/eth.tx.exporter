@@ -68,3 +68,45 @@ This project uses Spring Boot — Application.java is the main entry point.
 Hot reload is possible with Spring DevTools.
 
 To run on a different port, update server.port in application.yml.
+
+
+
+Assumptions
+Only Ethereum Mainnet is supported in this version.
+
+Requires valid API key for external blockchain provider (Alchemy).
+
+All transactions are fetched live from the provider — no internal cache for now.
+
+Architecture Decisions
+Spring Boot chosen for quick REST API setup and production-readiness.
+
+Gradle build for flexible dependency management.
+
+Externalized API keys for security and portability.
+
+-----------------------------------------------------------
+
+### 💡 Bonus: Scalability & Complex Transaction Handling
+## Large-Scale Transaction Storage
+
+Architecture
+
+Ingestion: Kafka / AWS Kinesis for asynchronous fetch
+
+Storage:
+Hot: MongoDB / DynamoDB (indexed queries)
+Cold: AWS S3 in Parquet (cheap archival)
+Indexes: (walletAddress, blockchain, timestamp DESC) and txHash
+
+
+## Trade-Offs for Complex Transactions (e.g., Uniswap Add Liquidity)
+Challenges
+
+Multiple internal calls across smart contracts
+Complex state changes and token movements
+
+# Approaches
+Raw logs -> only	Full fidelity -> Requires heavy client parsing
+Parsed summaries ->	Easy to consume	-> Loses raw detail
+Hybrid ✅	-> Best of both	 -> Higher storage & processing cost
